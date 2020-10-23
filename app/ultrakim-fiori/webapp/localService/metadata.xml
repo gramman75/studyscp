@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="BookService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="AuthorSrv" EntityType="BookService.AuthorSrv">
+          <NavigationPropertyBinding Path="book" Target="BookSrv"/>
+        </EntitySet>
+        <EntitySet Name="BookSrv" EntityType="BookService.BookSrv">
+          <NavigationPropertyBinding Path="author" Target="AuthorSrv"/>
+        </EntitySet>
+      </EntityContainer>
+      <EntityType Name="AuthorSrv">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="name" Type="Edm.String"/>
+        <NavigationProperty Name="book" Type="Collection(BookService.BookSrv)" Partner="author"/>
+      </EntityType>
+      <EntityType Name="BookSrv">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="title" Type="Edm.String"/>
+        <Property Name="stock" Type="Edm.Int32"/>
+        <NavigationProperty Name="author" Type="BookService.AuthorSrv" Partner="book">
+          <ReferentialConstraint Property="author_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <Property Name="author_ID" Type="Edm.Int32"/>
+      </EntityType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

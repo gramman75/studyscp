@@ -1,0 +1,84 @@
+<mvc:View controllerName="ns.ultrakim-fiori.controller.View1" 
+    xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                        <Table id="idProductsTable"
+                            inset="false"
+                            items="{
+                                path: '/BookSrv',
+                                sorter: {
+                                    path: 'title'
+                                },
+                                parameters: {
+                                    $$updateGroupId : 'bookGroup'
+                                }
+                            }">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <content>
+                                        <Title text="Products" level="H2"/>
+                                        <ToolbarSpacer />
+                                        <ComboBox id="idPopinLayout"
+                                            placeholder="Popin layout options"
+                                            change="onPopinLayoutChanged">
+                                            <items>
+                                                <core:Item  text="Block"
+                                                    key="Block"/>
+                                                <core:Item  text="Grid Large"
+                                                    key="GridLarge"/>
+                                                <core:Item  text="Grid Small"
+                                                    key="GridSmall"/>
+                                            </items>
+                                        </ComboBox>
+                                        <Label text="Sticky options:" />
+                                        <CheckBox text="ColumnHeaders"
+                                            select="onSelect"/>
+                                        <CheckBox text="HeaderToolbar"
+                                            select="onSelect"/>
+                                        <CheckBox text="InfoToolbar"
+                                            select="onSelect"/>
+                                        <ToggleButton id="toggleInfoToolbar"
+                                            text="Hide/Show InfoToolbar"
+                                            press="onToggleInfoToolbar" />
+                                        <Button id="btnSave" icon="sap-icon://save" press="onSave" tooltip="저장"></Button>
+                                    </content>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <OverflowToolbar>
+                                    <Label text="Wide range of available products"/>
+                                </OverflowToolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="ID" />
+                                </Column>
+                                <Column>                                  
+                                    <Text text="Title" />
+                                </Column>
+                                <Column>
+                                    <Text text="Stock" />
+                                </Column>                               
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{ID}" />
+                                        <Input value="{title}" />
+                                        <Input value="{stock}" />
+                                       
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

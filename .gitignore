@@ -1,0 +1,16 @@
+# added by cds deploy
+default-env.json
+
+# added by cds deploy
+connection.properties
+
+/**/node_modules
+/srv/src/gen/*
+/db/src/gen/*
+/srv/target/*
+/srv/src/main/resources/edmx
+/srv/.settings/
+/mta_archives/
+/integration-tests/target/
+/.vscode/
+/.settings/

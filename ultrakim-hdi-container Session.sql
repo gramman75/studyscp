@@ -1,0 +1,1 @@
+select * from FOO_BAR_BOOKS
